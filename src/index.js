@@ -181,7 +181,7 @@ export default class extends Component {
    * Init states
    * @return {object} states
    */
-  state = this.initState(this.props)
+  state = this.initState(this.props, true)
 
   /**
    * Initial render flag
@@ -254,13 +254,15 @@ export default class extends Component {
 
     initState.total = initState.children ? initState.children.length || 1 : 0
 
-    if (state.total === initState.total && !updateIndex) {
-      // retain the index
-      initState.index = state.index
-    } else {
-      initState.index =
-        initState.total > 1 ? Math.min(props.index, initState.total - 1) : 0
-    }
+    // if (state.total === initState.total && !updateIndex) {
+    //   // retain the index
+    //   initState.index = state.index
+    // } else {
+    //   initState.index =
+    //     initState.total > 1 ? Math.min(props.index, initState.total - 1) : 0
+    // }
+    initState.index = props.index
+
 
     // Default: horizontal
     const { width, height } = Dimensions.get('window')
